@@ -47,25 +47,6 @@ stage.appendChild(ring);
 // More Menu
 // ==========================================
 
-document.querySelectorAll('.tr').forEach((t) => {
-t.innerHTML += t.innerHTML;
-});
-
-const more = document.querySelector('.more');
-const mbtn = more.querySelector('.mbtn');
-
-mbtn.onclick = (e) => {
-e.preventDefault();
-e.stopPropagation();
-
-more.classList.toggle('open');
-};
-
-document.addEventListener('click', (e) => {
-if (!more.contains(e.target)) {
-    more.classList.remove('open');
-}
-});
 
 
 // ==========================================

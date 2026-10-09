@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact – Stackly</title>
+    <meta name="description" content="Talk to Stackly about accounting, tax and advisory services.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500&family=Martian+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pages.css">
+</head>
+
+<body>
+    <div id="loader"><svg viewBox="0 0 34 24" fill="#d9fb6b">
+            <path d="M12 0l12 24H15L6 6 0 18l3 6h12L12 18l6-12 4 8h4L18 0z" />
+            <path d="M22 10l12 14H24z" />
+        </svg></div>
+    <div id="bar"></div>
+    <button id="up" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <header class="hero phero" id="home">
+        <img class="bgimg" src="https://picsum.photos/seed/sky-clouds-4/1600/900" alt="" loading="eager">
+        <nav>
+            <a href="./index.html" class="logo"><svg viewBox="0 0 34 24" fill="#fff">
+                    <path d="M12 0l12 24H15L6 6 0 18l3 6h12L12 18l6-12 4 8h4L18 0z" />
+                    <path d="M22 10l12 14H24z" />
+                </svg>Stackly</a>
+            <div class="links mono" id="links">
+                <a href="./index.html">Home</a>
+                <a href="./service.html">Services</a>
+                <a href="./about.html">About us</a>
+                <a href="./blog.html">Blog</a>
+                <a href="./contact.html" class="active">Contact</a>
+            </div>
+            <a href="./login.html" class="pill mono" style="background:var(--lime);color:#000">Login</a>
+            <button class="burger" id="burger" aria-label="Menu"><span></span><span></span></button>
+        </nav>
+        <div class="hero-c">
+            <div class="crumbs mono"><a href="./index.html">Home</a> <span>/</span> Contact</div>
+            <h1>Let’s talk about <span>your finances</span></h1>
+            <p class="sub">Tell us where you are today and we’ll reply within one business day.</p>
+        </div>
+    </header>
+
+    <section>
+        <div class="wrap">
+            <div class="icards stagger">
+                <div class="icard"><div class="ico"><i class="fa-solid fa-phone"></i></div><h3>Call us</h3><a href="tel:+15550123456">+1 (555) 012-3456</a></div>
+                <div class="icard"><div class="ico"><i class="fa-solid fa-envelope"></i></div><h3>Email us</h3><a href="mailto:hello@Stackly.com">hello@Stackly.com</a></div>
+                <div class="icard"><div class="ico"><i class="fa-solid fa-location-dot"></i></div><h3>Visit us</h3><p>221 Finance Street, Suite 400<br>New York, NY 10005</p></div>
+                <div class="icard"><div class="ico"><i class="fa-regular fa-clock"></i></div><h3>Office hours</h3><p>Mon – Fri, 9:00 – 18:00 (EST)<br>Replies within 1 business day</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="wrap">
+            <div class="contact rv" data-r="zoom">
+                <div class="cinfo">
+                    <div>
+                        <div class="eyebrow mono" style="justify-content:flex-start;color:#fff"><span style="width:5px;height:5px;background:#fff;display:inline-block"></span>Contact</div>
+                        <h2>Let’s talk about your finances</h2>
+                        <p>Tell us where you are today and we’ll reply within one business day.</p>
+                    </div>
+                    <div>
+                        <a href="mailto:hello@Stackly.com"><i class="fa-solid fa-envelope"></i> hello@Stackly.com</a>
+                        <a href="tel:+15550123456"><i class="fa-solid fa-phone"></i> +1 (555) 012-3456</a>
+                        <div class="soc">
+                            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="cform" data-form="sent" novalidate>
+                    <div class="r2">
+                        <div class="field"><label for="cn">Full name</label><input id="cn" placeholder="Jane Doe" required><small class="msg"></small></div>
+                        <div class="field"><label for="ce">Email address</label><input id="ce" type="email" placeholder="jane@company.com" required><small class="msg"></small></div>
+                    </div>
+                    <div class="r2">
+                        <div class="field"><label for="cp">Phone (optional)</label><input id="cp" type="tel" placeholder="+1 555 000 0000"><small class="msg"></small></div>
+                        <div class="field"><label for="cs">Service</label>
+                            <select id="cs">
+                                <option>Accounting &amp; bookkeeping</option><option>Tax planning &amp; compliance</option>
+                                <option>Payroll services</option><option>Financial planning &amp; analysis</option><option>Outsourced CFO</option>
+                            </select></div>
+                    </div>
+                    <div class="field"><label for="cm">How can we help?</label><textarea id="cm" placeholder="Tell us a little about your business…" required data-min="10"></textarea><small class="msg"></small></div>
+                    <button class="btn dark mono" type="submit"><b style="font-weight:500">Send message</b> <i class="fa-solid fa-arrow-right"></i></button>
+
+                    <div class="ok">
+                        <div class="tick"><i class="fa-solid fa-check"></i></div>
+                        <h3>Message sent!</h3>
+                        <p>Thanks for reaching out. We’ll reply within one business day.</p>
+                        <button class="btn dark mono" type="button" data-reset><b style="font-weight:500">Send another</b> <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="wrap">
+            <div class="map rv" data-r="zoom">
+                <!-- Replace the map bbox/marker with your real office location -->
+                <iframe title="Office location map" loading="lazy"
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=-74.0200%2C40.7000%2C-73.9900%2C40.7200&amp;layer=mapnik&amp;marker=40.7075%2C-74.0089"></iframe>
+                <div class="addr">
+                    <h3>Stackly HQ</h3>
+                    <p>221 Finance Street, Suite 400<br>New York, NY 10005</p>
+                    <a href="https://www.openstreetmap.org/?mlat=40.7075&amp;mlon=-74.0089#map=16/40.7075/-74.0089" target="_blank" rel="noopener" class="go mono">Get directions <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq">
+        <div class="wrap">
+            <div class="head rv">
+                <div class="eyebrow mono">FAQ</div>
+                <h2>Before you reach out</h2>
+            </div>
+            <div class="faq rv">
+                <details open><summary>How fast will you reply?</summary><p>We respond to every enquiry within one business day, usually much sooner.</p></details>
+                <details><summary>Is the first call really free?</summary><p>Yes. The 20-minute discovery call is free and comes with no obligation.</p></details>
+                <details><summary>Do you work with clients outside the US?</summary><p>Absolutely. We support clients in 12 countries across multiple currencies and tax regimes.</p></details>
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="ft">
+        <div class="ft-cta">
+            <h3>Ready for calmer books and <span>clearer decisions?</span></h3>
+            <a href="./contact.html" class="btn mono">Book a free call <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+        <div class="ft-grid">
+            <div class="ft-brand">
+                <a href="./index.html" class="logo"><svg viewBox="0 0 34 24" fill="#fff">
+                        <path d="M12 0l12 24H15L6 6 0 18l3 6h12L12 18l6-12 4 8h4L18 0z" />
+                        <path d="M22 10l12 14H24z" />
+                    </svg>Stackly</a>
+                <p>Reliable accounting, tax and advisory services designed to support your business growth.</p>
+                <ul class="ft-contact">
+                    <li><i class="fa-solid fa-location-dot"></i><span>221 Finance Street, Suite 400<br>New York, NY 10005</span></li>
+                    <li><i class="fa-solid fa-phone"></i><a href="tel:+15550123456">+1 (555) 012-3456</a></li>
+                    <li><i class="fa-solid fa-envelope"></i><a href="mailto:hello@Stackly.com">hello@Stackly.com</a></li>
+                    <li><i class="fa-regular fa-clock"></i><span>Mon – Fri, 9:00 – 18:00 (EST)</span></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./about.html">About us</a></li>
+                    <li><a href="./about.html#team">Our team</a></li>
+                    <li><a href="./index.html#cases">Case studies</a></li>
+                    <li><a href="./blog.html">Blog</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="./contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="./service.html#services">Accounting &amp; bookkeeping</a></li>
+                    <li><a href="./service.html#services">Tax planning</a></li>
+                    <li><a href="./service.html#services">Payroll services</a></li>
+                    <li><a href="./service.html#services">Financial analysis</a></li>
+                    <li><a href="./service.html#services">Cloud accounting</a></li>
+                    <li><a href="./service.html#services">Outsourced CFO</a></li>
+                    <li><a href="./service.html#pricing">Pricing</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="./blog.html">Articles</a></li>
+                    <li><a href="./service.html#faq">FAQ</a></li>
+                    <li><a href="#">Help centre</a></li>
+                    <li><a href="#">Tax calendar</a></li>
+                    <li><a href="#">Free templates</a></li>
+                    <li><a href="./login.html">Client login</a></li>
+                    <li><a href="./signup.html">Create account</a></li>
+                </ul>
+            </div>
+
+            <div class="ft-news">
+                <h4>Newsletter</h4>
+                <p>Monthly tax deadlines, cash-flow tips and product news. No spam.</p>
+                <form class="sub" onsubmit="event.preventDefault();this.querySelector('b').textContent='Thanks!'">
+                    <input type="email" placeholder="Enter your email" required aria-label="Email">
+                    <button class="btn mono"><b style="font-weight:500">Submit</b> <i class="fa-solid fa-arrow-right"></i></button>
+                </form>
+                <small>By subscribing you agree to our Privacy Policy.</small>
+                <div class="social">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+                <div class="ft-badges">
+                    <span><i class="fa-solid fa-shield-halved"></i> SOC 2 aligned</span>
+                    <span><i class="fa-solid fa-lock"></i> GDPR ready</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="ft-bottom">
+            <span>© 2026 Stackly Inc. All rights reserved.</span>
+            <div class="legal">
+                <a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Cookie Policy</a><a href="#">Licensing</a><a href="#">Sitemap</a>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="pages.js"></script>
+</body>
+
+</html>

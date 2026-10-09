@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Log in – Stackly</title>
+    <meta name="description" content="Log in to your Stackly client account.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500&family=Martian+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pages.css">
+</head>
+
+<body class="auth-page">
+    <div id="loader"><svg viewBox="0 0 34 24" fill="#d9fb6b">
+            <path d="M12 0l12 24H15L6 6 0 18l3 6h12L12 18l6-12 4 8h4L18 0z" />
+            <path d="M22 10l12 14H24z" />
+        </svg></div>
+    <div class="toast" id="toast"><i class="fa-solid fa-circle-check"></i><span></span></div>
+
+    <main class="auth">
+        <aside class="auth-art">
+            <img class="bgimg" src="https://picsum.photos/seed/finance-login/1000/1200" alt="">
+            <a href="./index.html" class="logo"><svg viewBox="0 0 34 24" fill="#fff">
+                    <path d="M12 0l12 24H15L6 6 0 18l3 6h12L12 18l6-12 4 8h4L18 0z" />
+                    <path d="M22 10l12 14H24z" />
+                </svg>Stackly</a>
+
+            <div class="fcard f1"><small>Cash balance</small><h3>$48.2k</h3></div>
+            <div class="fcard f2"><b>Revenue growth</b>
+                <div class="bars"><i style="height:30%"></i><i style="height:45%"></i><i style="height:40%"></i><i style="height:80%"></i><i style="height:100%"></i></div>
+            </div>
+            <div class="fcard f3"><small>Profit margin</small><h3>49%</h3></div>
+
+            <div>
+                <h2>Your finances, <span>always in view</span></h2>
+                <div class="auth-quote" style="margin-top:28px">
+                    <p>“Their bookkeeping and tax team saves us hours every month. It’s accurate, timely, and stress-free.”</p>
+                    <div class="who"><img src="https://i.pravatar.cc/100?img=47" alt=""><span>Maya R. · Founder, Northwind Studio</span></div>
+                </div>
+            </div>
+        </aside>
+
+        <section class="auth-main">
+            <div class="auth-box">
+                <a href="./index.html" class="logo"><svg viewBox="0 0 34 24" fill="#000">
+                        <path d="M12 0l12 24H15L6 6 0 18l3 6h12L12 18l6-12 4 8h4L18 0z" />
+                        <path d="M22 10l12 14H24z" />
+                    </svg>Stackly</a>
+                <h1>Welcome back</h1>
+                <p class="lead">Log in to view your books, reports and tax documents.</p>
+
+                <div class="soc2">
+                    <button class="sbtn" type="button"><i class="fa-brands fa-google"></i> Google</button>
+                    <button class="sbtn" type="button"><i class="fa-brands fa-microsoft"></i> Microsoft</button>
+                </div>
+                <div class="or">or log in with email</div>
+
+                <form class="aform" data-form="toast" data-toast="Welcome back! (demo – connect your backend)" novalidate>
+                    <div class="field"><label for="email">Email address</label>
+                        <input id="email" type="email" placeholder="you@company.com" autocomplete="email" required><small class="msg"></small></div>
+                    <div class="field"><label for="pass">Password</label>
+                        <div class="pw"><input id="pass" type="password" placeholder="Your password" autocomplete="current-password" required><button type="button" aria-label="Show password"><i class="fa-solid fa-eye"></i></button></div>
+                        <small class="msg"></small></div>
+                    <div class="row-s">
+                        <label class="chk"><input type="checkbox" checked> Remember me</label>
+                        <a href="#">Forgot password?</a>
+                    </div>
+                    <button class="btn dark mono" type="submit"><b style="font-weight:500">Log in</b> <i class="fa-solid fa-arrow-right"></i></button>
+                </form>
+                <p class="switch">New to Stackly? <a href="./signup.html">Create an account</a></p>
+
+            </div>
+        </section>
+    </main>
+
+    <script src="pages.js"></script>
+</body>
+
+</html>
