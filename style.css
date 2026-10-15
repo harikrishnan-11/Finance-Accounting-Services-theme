@@ -200,6 +200,10 @@ nav {
     width: 100%
 }
 
+.nav-login-mobile {
+    display: none
+}
+
 .burger {
     display: none;
     background: none;
@@ -2211,6 +2215,21 @@ body:not(.ready) .hero-c>* {
 
     .links a:last-child {
         border: 0
+    }
+
+    .links a.nav-login-mobile {
+        display: block;
+        width: fit-content;
+        margin: 12px 0 6px;
+        padding: 11px 18px;
+    }
+
+    .links a.nav-login-mobile:after {
+        display: none
+    }
+
+    .nav-login-desktop {
+        display: none
     }
 
     nav>.btn,

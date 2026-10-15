@@ -39,10 +39,16 @@
 
         /* ---------- nav ---------- */
         nav { display: flex; align-items: center; justify-content: space-between; padding: 22px 40px; position: relative; z-index: 5 }
+        .nav-links { display: flex; align-items: center; gap: 18px }
+        .nav-links .home-link, .burger { display: none }
         .logo { display: flex; align-items: center; gap: 10px; font-size: 20px }
         .logo svg { width: 34px; height: 24px }
         .pill { padding: 13px 20px; border-radius: 99px; background: var(--lime); color: #000; position: relative; overflow: hidden; transition: transform .3s }
         .pill:hover { transform: translateY(-2px) }
+        .burger { width: 40px; height: 40px; border: 0; background: none; color: #fff; cursor: pointer }
+        .burger span { display: block; height: 2px; background: #fff; margin: 7px 8px; transition: .3s }
+        .burger.open span:first-child { transform: translateY(4.5px) rotate(45deg) }
+        .burger.open span:last-child { transform: translateY(-4.5px) rotate(-45deg) }
 
         /* ---------- content ---------- */
         main { flex: 1; display: grid; place-items: center; text-align: center; padding: 10px 20px 50px; position: relative }
@@ -131,6 +137,11 @@
         @media(max-width:768px) {
             body { padding: 6px } .page { border-radius: 24px; min-height: calc(100vh - 12px); min-height: calc(100dvh - 12px) }
             nav { padding: 16px 20px } .fc { display: none }
+            .burger { display: block }
+            .nav-links { position: absolute; top: 70px; left: 12px; right: 12px; display: flex; flex-direction: column; align-items: stretch; gap: 0; padding: 10px 24px; border-radius: 16px; background: rgba(10, 60, 110, .94); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); opacity: 0; visibility: hidden; transform: translateY(-10px); transition: .3s }
+            .nav-links.open { opacity: 1; visibility: visible; transform: none }
+            .nav-links .home-link { display: block; padding: 14px 0; border-bottom: 1px solid rgba(255, 255, 255, .12) }
+            .nav-links .pill { align-self: flex-start; margin-top: 12px }
             main { padding-bottom: 36px } .cta { flex-direction: column; align-items: stretch } .btn { justify-content: space-between }
             .ghost { text-align: center }
         }
@@ -156,7 +167,11 @@
                     <path d="M12 0l12 24H15L6 6 0 18l3 6h12L12 18l6-12 4 8h4L18 0z" />
                     <path d="M22 10l12 14H24z" />
                 </svg>Stackly</a>
-            <a href="./login.html" class="pill mono">Login</a>
+            <div class="nav-links" id="links">
+                <a href="./index.html" class="home-link mono">Home</a>
+                <a href="./login.html" class="pill mono">Login</a>
+            </div>
+            <button class="burger" id="burger" aria-label="Menu"><span></span><span></span></button>
         </nav>
 
         <div class="fc a" data-depth="18"><div><small>Revenue growth</small>
@@ -210,6 +225,19 @@
             document.getElementById('loader').classList.add('hide');
             document.body.classList.add('ready');
         }, 700);
+
+        var burger = document.getElementById('burger');
+        var links = document.getElementById('links');
+        burger.addEventListener('click', function () {
+            burger.classList.toggle('open');
+            links.classList.toggle('open');
+        });
+        links.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', function () {
+                burger.classList.remove('open');
+                links.classList.remove('open');
+            });
+        });
 
         // show the missing path
         try { document.getElementById('path').textContent = location.pathname + location.search; } catch (e) { }
