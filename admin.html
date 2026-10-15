@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard – Stackly Finance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Martian+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+<div class="toast" id="toast"><i class="fa-solid fa-circle-check"></i><span></span></div>
+
+<div class="dash-shell">
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-top">
+            <a href="./index.html" class="logo"><svg viewBox="0 0 34 24" fill="#fff"><path d="M12 0l12 24H15L6 6 0 18l3 6h12L12 18l6-12 4 8h4L18 0z"/><path d="M22 10l12 14H24z"/></svg>Stackly</a>
+            <button class="sidebar-close" id="sidebarClose" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+
+        <div class="sidebar-user">
+            <div class="sidebar-avatar">DR</div>
+            <div>
+                <p class="sidebar-user-name">Daniel Reed</p>
+                <p class="sidebar-user-email">daniel@stackly.com</p>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <p class="nav-label">Firm operations</p>
+            <a href="#overview" class="nav-link active" data-section="overview"><i class="fa-solid fa-grip"></i> Overview</a>
+            <a href="#clients" class="nav-link" data-section="clients"><i class="fa-solid fa-user-group"></i> Clients</a>
+            <a href="#staff" class="nav-link" data-section="staff"><i class="fa-solid fa-user-tie"></i> Accountants</a>
+            <a href="#requests" class="nav-link" data-section="requests"><i class="fa-solid fa-file-invoice-dollar"></i> Invoices</a>
+            <a href="#departments" class="nav-link" data-section="departments"><i class="fa-solid fa-layer-group"></i> Services &amp; Plans</a>
+
+            <p class="nav-label">Insights</p>
+            <a href="#analytics" class="nav-link" data-section="analytics"><i class="fa-solid fa-chart-line"></i> Analytics</a>
+            <a href="#reports" class="nav-link" data-section="reports"><i class="fa-solid fa-file-lines"></i> Reports</a>
+
+            <p class="nav-label">Account</p>
+            <a href="#settings" class="nav-link" data-section="settings"><i class="fa-solid fa-gear"></i> Settings</a>
+            <a href="./login.html" class="nav-link nav-link-danger"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</a>
+        </nav>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- ============ MAIN ============ -->
+    <div class="dash-main">
+
+        <header class="topbar">
+            <button class="menu-toggle" id="menuToggle" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+            <div class="topbar-search">Finance &amp; Accounting Admin</div>
+            <div class="topbar-actions">
+                <div class="topbar-user">
+                    <div class="topbar-avatar"><i class="fa-solid fa-user"></i></div>
+                    <div class="topbar-user-text">
+                        <p class="topbar-user-name">Admin</p>
+                        <p class="topbar-user-email"><span id="dashboardEmail">daniel@stackly.com</span></p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- ============ OVERVIEW ============ -->
+        <section class="dash-section active" id="overview">
+            <div class="section-head">
+                <div>
+                    <h1>Firm overview</h1>
+                    <p class="section-sub">Live view of revenue, receivables, tax filings and client activity.</p>
+                </div>
+                <a href="#" class="btn-primary" data-toast="Invoice builder coming soon">New invoice <i class="fa-solid fa-plus"></i></a>
+            </div>
+
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <span class="kpi-icon"><i class="fa-solid fa-sack-dollar"></i></span>
+                    <h3 data-count="842" data-pre="$" data-suf="K">$842K</h3>
+                    <p>Revenue (YTD)</p>
+                    <span class="kpi-trend kpi-trend-up"><i class="fa-solid fa-arrow-trend-up"></i> 12.4%</span>
+                </div>
+                <div class="kpi-card">
+                    <span class="kpi-icon"><i class="fa-solid fa-hand-holding-dollar"></i></span>
+                    <h3 data-count="64.2" data-pre="$" data-suf="K">$64.2K</h3>
+                    <p>Outstanding receivables</p>
+                    <span class="kpi-trend kpi-trend-up"><i class="fa-solid fa-arrow-trend-up"></i> 8% lower than Sep</span>
+                </div>
+                <div class="kpi-card">
+                    <span class="kpi-icon"><i class="fa-solid fa-calendar-check"></i></span>
+                    <h3 data-count="38">38</h3>
+                    <p>Tax filings due this month</p>
+                    <span class="kpi-trend kpi-trend-up"><i class="fa-solid fa-arrow-trend-up"></i> 31 already prepared</span>
+                </div>
+                <div class="kpi-card">
+                    <span class="kpi-icon"><i class="fa-solid fa-star"></i></span>
+                    <h3 data-count="4.9">4.9</h3>
+                    <p>Client satisfaction</p>
+                    <span class="kpi-trend kpi-trend-up"><i class="fa-solid fa-arrow-trend-up"></i> 0.2%</span>
+                </div>
+            </div>
+
+            <div class="quick-actions">
+                <a href="#" class="quick-action" data-toast="Invoice builder coming soon"><span class="quick-action-icon"><i class="fa-solid fa-file-invoice"></i></span>New invoice</a>
+                <a href="#" class="quick-action" data-toast="Payment reminders sent"><span class="quick-action-icon"><i class="fa-solid fa-bell"></i></span>Send reminder</a>
+                <a href="#" class="quick-action" data-toast="Generating report…"><span class="quick-action-icon"><i class="fa-solid fa-file-lines"></i></span>Generate report</a>
+                <a href="#" class="quick-action" data-toast="Newsletter draft opened"><span class="quick-action-icon"><i class="fa-solid fa-envelope"></i></span>Client newsletter</a>
+            </div>
+
+            <div class="content-grid overview-charts">
+                <div class="panel">
+                    <div class="panel-head">
+                        <h2>Revenue &amp; collections trend</h2>
+                        <div class="panel-head-actions">
+                            <span class="chart-legend-inline"><span class="dot-swatch" style="--c:var(--blue)"></span>Revenue</span>
+                            <span class="chart-legend-inline"><span class="dot-swatch dot-swatch-line" style="--c:var(--ink)"></span>Collections</span>
+                        </div>
+                    </div>
+                    <div class="line-chart-wrap">
+                        <svg class="line-chart" viewBox="0 0 560 220" preserveAspectRatio="none" role="img" aria-label="Revenue and collections over the last 7 months">
+                            <g class="line-chart-grid">
+                                <line x1="0" y1="10" x2="560" y2="10"></line><line x1="0" y1="62" x2="560" y2="62"></line>
+                                <line x1="0" y1="114" x2="560" y2="114"></line><line x1="0" y1="166" x2="560" y2="166"></line>
+                                <line x1="0" y1="200" x2="560" y2="200"></line>
+                            </g>
+                            <polygon class="line-chart-area" points="0,140 93,120 186,150 280,86 373,110 466,58 560,20 560,200 0,200"></polygon>
+                            <polyline class="line-chart-path line-chart-path-revenue" points="0,140 93,120 186,150 280,86 373,110 466,58 560,20"></polyline>
+                            <polyline class="line-chart-path line-chart-path-orders" points="0,176 93,168 186,178 280,150 373,158 466,132 560,104"></polyline>
+                            <g class="line-chart-dots"><circle cx="560" cy="20" r="5"></circle></g>
+                        </svg>
+                        <div class="line-chart-labels"><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span></div>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-head"><h2>Invoice status split</h2></div>
+                    <div class="donut-wrap">
+                        <div class="donut-chart" style="--p1:65;--p2:20;--p3:15">
+                            <div class="donut-center"><strong>118</strong><span>invoices</span></div>
+                        </div>
+                        <ul class="legend-list donut-legend">
+                            <li><span class="legend-dot" style="--c:var(--ink)"></span> Paid <strong>65%</strong></li>
+                            <li><span class="legend-dot" style="--c:var(--lime)"></span> Upcoming <strong>20%</strong></li>
+                            <li><span class="legend-dot" style="--c:var(--sky)"></span> Overdue <strong>15%</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="panel">
+                    <div class="panel-head">
+                        <h2>Recent invoices</h2>
+                        <a href="#" class="link-read" data-toast="Export started">Export <i class="fa-solid fa-arrow-up-from-bracket"></i></a>
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Invoice ID</th><th>Client</th><th>Service / Plan</th><th>Amount</th><th>Status</th><th></th></tr></thead>
+                            <tbody>
+                                <tr><td>#INV-4921</td><td>Northwind Studio</td><td>Growth Plan — November</td><td>$8,500</td><td><span class="status status-transit">Upcoming</span></td><td><a href="#" class="link-read" data-toast="Opening invoice">View</a></td></tr>
+                                <tr><td>#INV-4918</td><td>Brightline Retail</td><td>Enterprise Plan — October</td><td>$10,500</td><td><span class="status status-delivered">Paid</span></td><td><a href="#" class="link-read" data-toast="Opening invoice">View</a></td></tr>
+                                <tr><td>#INV-4902</td><td>Kumar Traders</td><td>Starter Plan — October</td><td>$2,500</td><td><span class="status status-pending">Overdue</span></td><td><a href="#" class="link-read" data-toast="Opening invoice">View</a></td></tr>
+                                <tr><td>#INV-4897</td><td>Harbor Health Clinic</td><td>Payroll &amp; VAT filing — Q3</td><td>$3,200</td><td><span class="status status-transit">Upcoming</span></td><td><a href="#" class="link-read" data-toast="Opening invoice">View</a></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-head">
+                        <h2>Firm activity</h2>
+                        <a href="#" class="link-read" data-toast="Full activity log coming soon">View all</a>
+                    </div>
+                    <ul class="activity-feed">
+                        <li class="activity-item"><span class="activity-icon activity-icon-transit"><i class="fa-solid fa-user-plus"></i></span>
+                            <div><p><strong>Harbor Health Clinic</strong> signed up for the Growth plan</p><span class="activity-time">1 hour ago</span></div></li>
+                        <li class="activity-item"><span class="activity-icon activity-icon-delivered"><i class="fa-solid fa-circle-check"></i></span>
+                            <div><p><strong>Brightline Retail</strong> paid invoice #INV-4918</p><span class="activity-time">4 hours ago</span></div></li>
+                        <li class="activity-item"><span class="activity-icon activity-icon-pending"><i class="fa-solid fa-triangle-exclamation"></i></span>
+                            <div><p>Invoice <strong>#INV-4902</strong> from Kumar Traders is 6 days overdue</p><span class="activity-time">Yesterday</span></div></li>
+                        <li class="activity-item"><span class="activity-icon activity-icon-transit"><i class="fa-solid fa-file-lines"></i></span>
+                            <div><p><strong>Maya Patel</strong> filed 12 quarterly VAT returns</p><span class="activity-time">Yesterday</span></div></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ CLIENTS ============ -->
+        <section class="dash-section" id="clients">
+            <div class="section-head">
+                <div>
+                    <h1>Clients</h1>
+                    <p class="section-sub">All client accounts across every plan.</p>
+                </div>
+                <a href="#" class="btn-primary" data-toast="Add-client form coming soon">Add client <i class="fa-solid fa-plus"></i></a>
+            </div>
+
+            <div class="kpi-grid kpi-grid-3">
+                <div class="kpi-card"><span class="kpi-icon"><i class="fa-solid fa-users"></i></span><h3>2,400</h3><p>Total clients</p></div>
+                <div class="kpi-card"><span class="kpi-icon"><i class="fa-solid fa-user-check"></i></span><h3>2,096</h3><p>Active clients</p></div>
+                <div class="kpi-card"><span class="kpi-icon"><i class="fa-solid fa-user-clock"></i></span><h3>52</h3><p>New clients this week</p></div>
+            </div>
+
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-f="all">All</button>
+                <button class="filter-tab" data-f="active">Active</button>
+                <button class="filter-tab" data-f="trial">Trial</button>
+                <button class="filter-tab" data-f="new">New this month</button>
+            </div>
+
+            <div class="panel">
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th>Name</th><th>Email</th><th>Plan tier</th><th>Status</th><th></th></tr></thead>
+                        <tbody>
+                            <tr data-tag="active"><td>Ravi Kumar</td><td>ravi@kumartraders.com</td><td><span class="role-badge role-growth">Growth</span></td><td><span class="status status-delivered">Active</span></td><td><a href="#" class="link-read" data-toast="Opening client">Manage</a></td></tr>
+                            <tr data-tag="active"><td>Anitha Menon</td><td>anitha@brightline.com</td><td><span class="role-badge role-admin">Enterprise</span></td><td><span class="status status-delivered">Active</span></td><td><a href="#" class="link-read" data-toast="Opening client">Manage</a></td></tr>
+                            <tr data-tag="trial new"><td>Dr. S. Iyer</td><td>s.iyer@harborhealth.com</td><td><span class="role-badge role-customer">Starter</span></td><td><span class="status status-pending">Trial</span></td><td><a href="#" class="link-read" data-toast="Opening client">Manage</a></td></tr>
+                            <tr data-tag="active new"><td>Priya Venkat</td><td>priya@northwind.com</td><td><span class="role-badge role-growth">Growth</span></td><td><span class="status status-delivered">Active</span></td><td><a href="#" class="link-read" data-toast="Opening client">Manage</a></td></tr>
+                        </tbody>
+                    </table>
+                    <p class="empty-row">No clients in this group yet.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ ACCOUNTANTS ============ -->
+        <section class="dash-section" id="staff">
+            <div class="section-head">
+                <div>
+                    <h1>Accountants</h1>
+                    <p class="section-sub">Manage your finance team and client assignments.</p>
+                </div>
+                <a href="#" class="btn-primary" data-toast="Invite form coming soon">Add team member <i class="fa-solid fa-plus"></i></a>
+            </div>
+
+            <div class="kpi-grid kpi-grid-3">
+                <div class="kpi-card"><span class="kpi-icon"><i class="fa-solid fa-user-tie"></i></span><h3>120</h3><p>Certified accountants</p></div>
+                <div class="kpi-card"><span class="kpi-icon"><i class="fa-solid fa-sitemap"></i></span><h3>6</h3><p>Service teams</p></div>
+                <div class="kpi-card"><span class="kpi-icon"><i class="fa-solid fa-user-clock"></i></span><h3>4</h3><p>Open roles</p></div>
+            </div>
+
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-f="all">All</button>
+                <button class="filter-tab" data-f="tax">Tax</button>
+                <button class="filter-tab" data-f="bookkeeping">Bookkeeping</button>
+                <button class="filter-tab" data-f="advisory">Advisory</button>
+            </div>
+
+            <div class="team-dash-grid">
+                <div class="team-dash-card" data-tag="advisory"><div class="team-dash-avatar">DR</div><h3>Daniel Reed</h3><p>Founder &amp; Managing Partner</p><a href="#" class="link-read" data-toast="Opening profile">View profile</a></div>
+                <div class="team-dash-card" data-tag="tax"><div class="team-dash-avatar">MP</div><h3>Maya Patel</h3><p>Head of Tax</p><a href="#" class="link-read" data-toast="Opening profile">View profile</a></div>
+                <div class="team-dash-card" data-tag="bookkeeping"><div class="team-dash-avatar">LM</div><h3>Lucas Meyer</h3><p>Senior Accountant</p><a href="#" class="link-read" data-toast="Opening profile">View profile</a></div>
+                <div class="team-dash-card" data-tag="advisory"><div class="team-dash-avatar">SA</div><h3>Sofia Alvarez</h3><p>Client Success Director</p><a href="#" class="link-read" data-toast="Opening profile">View profile</a></div>
+                <div class="team-dash-card" data-tag="tax"><div class="team-dash-avatar">AK</div><h3>Arjun Khanna</h3><p>VAT &amp; GST Specialist</p><a href="#" class="link-read" data-toast="Opening profile">View profile</a></div>
+                <div class="team-dash-card" data-tag="bookkeeping"><div class="team-dash-avatar">NB</div><h3>Nina Brooks</h3><p>Payroll Lead</p><a href="#" class="link-read" data-toast="Opening profile">View profile</a></div>
+            </div>
+        </section>
+
+        <!-- ============ INVOICES ============ -->
+        <section class="dash-section" id="requests">
+            <div class="section-head">
+                <div>
+                    <h1>Invoices</h1>
+                    <p class="section-sub">Every invoice issued to clients, across all plans and services.</p>
+                </div>
+                <a href="#" class="btn-primary" data-toast="Invoice builder coming soon">New invoice <i class="fa-solid fa-plus"></i></a>
+            </div>
+
+            <div class="kpi-grid kpi-grid-3">
+                <div class="kpi-card"><span class="kpi-icon"><i class="fa-solid fa-hourglass-half"></i></span><h3>7</h3><p>Pending review</p></div>
+                <div class="kpi-card"><span class="kpi-icon"><i class="fa-solid fa-calendar-check"></i></span><h3>1,096</h3><p>Active subscriptions</p></div>
+                <div class="kpi-card"><span class="kpi-icon"><i class="fa-solid fa-circle-check"></i></span><h3>742</h3><p>Invoices paid this year</p></div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-head">
+                    <h2>All invoices</h2>
+                    <a href="#" class="link-read" data-toast="Filters coming soon">Filter <i class="fa-solid fa-sliders"></i></a>
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th>Invoice ID</th><th>Client</th><th>Plan</th><th>Amount</th><th>Payment method</th><th>Status</th><th></th></tr></thead>
+                        <tbody>
+                            <tr><td>#INV-4921</td><td>Northwind Studio</td><td>Growth</td><td>$8,500</td><td><span class="status status-delivered">Card on file</span></td><td><span class="status status-transit">Upcoming</span></td><td><a href="#" class="link-read" data-toast="Opening invoice">View</a></td></tr>
+                            <tr><td>#INV-4918</td><td>Brightline Retail</td><td>Enterprise</td><td>$10,500</td><td><span class="status status-delivered">Bank transfer</span></td><td><span class="status status-delivered">Paid</span></td><td><a href="#" class="link-read" data-toast="Opening invoice">View</a></td></tr>
+                            <tr><td>#INV-4902</td><td>Kumar Traders</td><td>Starter</td><td>$2,500</td><td><span class="status status-pending">Payment failed</span></td><td><span class="status status-pending">Overdue</span></td><td><a href="#" class="link-read" data-toast="Reminder sent">View</a></td></tr>
+                            <tr><td>#INV-4897</td><td>Harbor Health Clinic</td><td>Growth</td><td>$8,500</td><td><span class="status status-delivered">Card on file</span></td><td><span class="status status-transit">Upcoming</span></td><td><a href="#" class="link-read" data-toast="Opening invoice">View</a></td></tr>
+                            <tr><td>#INV-4889</td><td>Carlos Rivera</td><td>Starter</td><td>$2,500</td><td><span class="status status-delivered">Card on file</span></td><td><span class="status status-delivered">Paid</span></td><td><a href="#" class="link-read" data-toast="Opening invoice">View</a></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ SERVICES & PLANS ============ -->
+        <section class="dash-section" id="departments">
+            <div class="section-head">
+                <div>
+                    <h1>Services &amp; plans</h1>
+                    <p class="section-sub">Manage accounting services, subscription plans and team ownership.</p>
+                </div>
+                <a href="#" class="btn-primary" data-toast="Service editor coming soon">Add service <i class="fa-solid fa-plus"></i></a>
+            </div>
+
+            <div class="kpi-grid kpi-grid-3">
+                <div class="kpi-card"><span class="kpi-icon"><i class="fa-solid fa-layer-group"></i></span><h3>6</h3><p>Service lines</p></div>
+                <div class="kpi-card"><span class="kpi-icon"><i class="fa-solid fa-circle-check"></i></span><h3>18,420</h3><p>Filings &amp; reports completed</p></div>
+                <div class="kpi-card"><span class="kpi-icon"><i class="fa-solid fa-triangle-exclamation"></i></span><h3>7</h3><p>Items awaiting client documents</p></div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-head">
+                    <h2>Top services this year</h2>
+                    <a href="#" class="link-read" data-toast="Full list coming soon">View all</a>
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th>Service</th><th>Led by</th><th>Avg. turnaround</th><th>Engagements</th><th>Revenue</th><th></th></tr></thead>
+                        <tbody>
+                            <tr><td>Accounting &amp; bookkeeping</td><td>Lucas Meyer</td><td>5 days</td><td>912</td><td>$312,400</td><td><a href="#" class="link-read" data-toast="Opening editor">Edit</a></td></tr>
+                            <tr><td>Tax planning &amp; compliance</td><td>Maya Patel</td><td>7 days</td><td>648</td><td>$226,100</td><td><a href="#" class="link-read" data-toast="Opening editor">Edit</a></td></tr>
+                            <tr><td>Payroll services</td><td>Nina Brooks</td><td>2 days</td><td>410</td><td>$143,800</td><td><a href="#" class="link-read" data-toast="Opening editor">Edit</a></td></tr>
+                            <tr><td>Outsourced CFO</td><td>Daniel Reed</td><td>Ongoing</td><td>96</td><td>$159,700</td><td><a href="#" class="link-read" data-toast="Opening editor">Edit</a></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ ANALYTICS ============ -->
+        <section class="dash-section" id="analytics">
+            <div class="section-head">
+                <div>
+                    <h1>Analytics</h1>
+                    <p class="section-sub">Performance across revenue, collections and client satisfaction.</p>
+                </div>
+                <a href="#" class="btn-primary" data-toast="Export started">Export report <i class="fa-solid fa-arrow-up-from-bracket"></i></a>
+            </div>
+
+            <div class="content-grid">
+                <div class="panel">
+                    <div class="panel-head"><h2>Revenue per month</h2><span class="link-read">Last 6 months</span></div>
+                    <div class="bar-chart">
+                        <div class="bar-col"><span class="bar" style="--h:48%"></span><label>May</label></div>
+                        <div class="bar-col"><span class="bar" style="--h:62%"></span><label>Jun</label></div>
+                        <div class="bar-col"><span class="bar" style="--h:41%"></span><label>Jul</label></div>
+                        <div class="bar-col"><span class="bar" style="--h:76%"></span><label>Aug</label></div>
+                        <div class="bar-col"><span class="bar" style="--h:59%"></span><label>Sep</label></div>
+                        <div class="bar-col"><span class="bar bar-current" style="--h:94%"></span><label>Oct</label></div>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-head"><h2>Revenue by service</h2></div>
+                    <ul class="legend-list">
+                        <li><span class="legend-dot" style="--c:var(--ink)"></span> Bookkeeping <strong>38%</strong></li>
+                        <li><span class="legend-dot" style="--c:var(--lime)"></span> Tax &amp; compliance <strong>27%</strong></li>
+                        <li><span class="legend-dot" style="--c:var(--sky)"></span> Payroll <strong>21%</strong></li>
+                        <li><span class="legend-dot" style="--c:var(--faint)"></span> Advisory &amp; other <strong>14%</strong></li>
+                    </ul>
+                    <div class="legend-bar">
+                        <span style="--w:38%;--c:var(--ink)"></span><span style="--w:27%;--c:var(--lime)"></span>
+                        <span style="--w:21%;--c:var(--sky)"></span><span style="--w:14%;--c:var(--faint)"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ REPORTS ============ -->
+        <section class="dash-section" id="reports">
+            <div class="section-head">
+                <div>
+                    <h1>Reports</h1>
+                    <p class="section-sub">Generate and download finance and compliance reports.</p>
+                </div>
+                <a href="#" class="btn-primary" data-toast="Report builder coming soon">New report <i class="fa-solid fa-plus"></i></a>
+            </div>
+            <div class="panel">
+                <div class="panel-head"><h2>Generated reports</h2></div>
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th>Report</th><th>Type</th><th>Generated</th><th>Size</th><th></th></tr></thead>
+                        <tbody>
+                            <tr><td>Monthly Revenue Summary — September</td><td>Finance</td><td>Oct 01, 2026</td><td>1.4 MB</td><td><a href="#" class="link-read" data-toast="Download started">Download</a></td></tr>
+                            <tr><td>Accounts Receivable Aging — Q3</td><td>Finance</td><td>Oct 05, 2026</td><td>920 KB</td><td><a href="#" class="link-read" data-toast="Download started">Download</a></td></tr>
+                            <tr><td>VAT / GST Filing Status</td><td>Compliance</td><td>Sep 22, 2026</td><td>780 KB</td><td><a href="#" class="link-read" data-toast="Download started">Download</a></td></tr>
+                            <tr><td>Client Satisfaction Survey</td><td>Clients</td><td>Sep 01, 2026</td><td>520 KB</td><td><a href="#" class="link-read" data-toast="Download started">Download</a></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ SETTINGS ============ -->
+        <section class="dash-section" id="settings">
+            <div class="section-head">
+                <div>
+                    <h1>Settings</h1>
+                    <p class="section-sub">Admin configuration and preferences.</p>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="panel">
+                    <div class="panel-head"><h2>Profile</h2></div>
+                    <form class="settings-form" id="settingsForm">
+                        <div class="form-grid">
+                            <div class="field"><label for="sName">Full name</label><input type="text" id="sName" value="Daniel Reed" /></div>
+                            <div class="field"><label for="sEmail">Email</label><input type="email" id="sEmail" value="daniel@stackly.com" /></div>
+                            <div class="field"><label for="sPhone">Phone</label><input type="tel" id="sPhone" placeholder="Add phone number" /></div>
+                            <div class="field"><label for="sRole">Role</label><input type="text" id="sRole" value="Admin — Managing Partner" disabled /></div>
+                        </div>
+                        <button type="submit" class="btn-primary">Save changes <i class="fa-solid fa-check"></i></button>
+                    </form>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-head"><h2>Firm preferences</h2></div>
+                    <div class="toggle-row">
+                        <div><p class="toggle-title">New invoice alerts</p><p class="toggle-sub">Email when a new invoice is issued to a client</p></div>
+                        <label class="switch"><input type="checkbox" checked /><span class="slider"></span></label>
+                    </div>
+                    <div class="toggle-row">
+                        <div><p class="toggle-title">Overdue payment alerts</p><p class="toggle-sub">Notify when an invoice passes its due date</p></div>
+                        <label class="switch"><input type="checkbox" checked /><span class="slider"></span></label>
+                    </div>
+                    <div class="toggle-row">
+                        <div><p class="toggle-title">Weekly firm digest</p><p class="toggle-sub">Summary of revenue, filings and client updates</p></div>
+                        <label class="switch"><input type="checkbox" checked /><span class="slider"></span></label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
+
+<script src="dashboard.js"></script>
+</body>
+</html>

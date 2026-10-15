@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>404 – Page not found | Stackly</title>
+    <meta name="robots" content="noindex">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500&family=Martian+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        :root { --lime: #d9fb6b; --ink: #1a1a1a; --sky: #3ec4f7; --mute: #555 }
+        * { box-sizing: border-box; margin: 0; padding: 0 }
+        html, body { min-height: 100%; }
+        body {
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #fff; line-height: 1.4;
+            background: var(--ink); padding: 10px; min-height: 100vh; min-height: 100dvh; overflow-x: hidden
+        }
+        a { color: inherit; text-decoration: none }
+        .mono { font-family: 'Martian Mono', ui-monospace, monospace; text-transform: uppercase; letter-spacing: .08em; font-size: 12px; font-weight: 500 }
+
+        /* ---------- stage ---------- */
+        .page {
+            position: relative; min-height: calc(100vh - 20px); min-height: calc(100dvh - 20px); border-radius: 32px; overflow: hidden;
+            display: flex; flex-direction: column; isolation: isolate;
+            background:
+                radial-gradient(ellipse 40% 12% at 12% 62%, rgba(255, 255, 255, .6), transparent 70%),
+                radial-gradient(ellipse 35% 10% at 85% 78%, rgba(255, 255, 255, .5), transparent 70%),
+                radial-gradient(ellipse 50% 14% at 35% 100%, rgba(255, 255, 255, .8), transparent 70%),
+                linear-gradient(180deg, #1272b8 0%, #2a8bd6 45%, #59aeea 100%)
+        }
+        .glow {
+            position: absolute; width: 460px; height: 460px; border-radius: 50%; z-index: -1; right: -120px; top: -120px;
+            background: radial-gradient(circle, rgba(217, 251, 107, .4), transparent 65%); animation: drift 12s ease-in-out infinite alternate
+        }
+        @keyframes drift { to { transform: translate(-80px, 70px) scale(1.25) } }
+
+        /* ---------- nav ---------- */
+        nav { display: flex; align-items: center; justify-content: space-between; padding: 22px 40px; position: relative; z-index: 5 }
+        .logo { display: flex; align-items: center; gap: 10px; font-size: 20px }
+        .logo svg { width: 34px; height: 24px }
+        .pill { padding: 13px 20px; border-radius: 99px; background: var(--lime); color: #000; position: relative; overflow: hidden; transition: transform .3s }
+        .pill:hover { transform: translateY(-2px) }
+
+        /* ---------- content ---------- */
+        main { flex: 1; display: grid; place-items: center; text-align: center; padding: 10px 20px 50px; position: relative }
+        .wrap { max-width: 760px; width: 100% }
+        .tag {
+            display: inline-flex; gap: 8px; align-items: center; padding: 9px 16px; border-radius: 99px; margin-bottom: 18px;
+            background: rgba(255, 255, 255, .16); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px)
+        }
+        .tag i { color: var(--lime) }
+
+        .num { display: flex; justify-content: center; align-items: center; gap: clamp(6px, 2vw, 22px); font-size: clamp(110px, 26vw, 260px); font-weight: 400; letter-spacing: -.07em; line-height: .95; user-select: none }
+        .num span { display: inline-block; opacity: 0; transform: translateY(60px) rotate(-6deg); animation: rise .9s cubic-bezier(.2, .8, .2, 1) forwards }
+        .num span:nth-child(1) { animation-delay: .15s }
+        .num span:nth-child(3) { animation-delay: .45s }
+        .num .zero { animation-delay: .3s; position: relative; width: .78em; height: .78em; margin: 0 .02em }
+        @keyframes rise { to { opacity: 1; transform: none } }
+
+        /* the "0" is a pie chart with a missing slice */
+        .pie { width: 100%; height: 100%; animation: spin 14s linear infinite; filter: drop-shadow(0 18px 30px rgba(0, 0, 0, .25)) }
+        @keyframes spin { to { transform: rotate(360deg) } }
+        .zero:hover .pie { animation-duration: 3s }
+        .pie .slice { transform-origin: 50px 50px; animation: wobble 3s ease-in-out infinite }
+        @keyframes wobble { 50% { transform: translate(5px, -5px) } }
+
+        h1 { font-size: clamp(28px, 5vw, 54px); font-weight: 400; letter-spacing: -.04em; line-height: 1.08; margin: 14px 0 0 }
+        h1 em { font-style: normal; color: rgba(255, 255, 255, .65) }
+        .sub { max-width: 470px; margin: 18px auto 30px; opacity: .95 }
+        .rv { opacity: 0; transform: translateY(28px); animation: rise .9s cubic-bezier(.2, .8, .2, 1) forwards }
+        .d1 { animation-delay: .6s } .d2 { animation-delay: .75s } .d3 { animation-delay: .9s } .d4 { animation-delay: 1.05s }
+
+        .cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap }
+        .btn {
+            display: inline-flex; align-items: center; gap: 14px; padding: 6px 6px 6px 22px; border-radius: 99px; background: var(--lime); color: #000;
+            border: 0; cursor: pointer; font: inherit; transition: transform .3s, box-shadow .3s; position: relative; overflow: hidden
+        }
+        .btn.mono, .pill.mono { font-family: 'Martian Mono', ui-monospace, monospace }
+        .btn i { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: #fff; display: grid; place-items: center; transition: transform .3s; rotate: -45deg }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(150, 190, 0, .4) }
+        .btn:hover i { transform: rotate(45deg) }
+        .ghost { padding: 17px 24px; border-radius: 99px; background: #1a64a6; transition: transform .3s, background .3s }
+        .ghost:hover { transform: translateY(-2px); background: #14548d }
+        .btn:before, .ghost:before, .pill:before {
+            content: ""; position: absolute; inset: 0; pointer-events: none; transform: translateX(-130%); transition: transform .8s;
+            background: linear-gradient(110deg, transparent 35%, rgba(255, 255, 255, .5) 50%, transparent 65%)
+        }
+        .ghost { position: relative; overflow: hidden }
+        .btn:hover:before, .ghost:hover:before, .pill:hover:before { transform: translateX(130%) }
+        .pulse { animation: pulse 2.4s infinite }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(217, 251, 107, .7) } 70%, 100% { box-shadow: 0 0 0 18px rgba(217, 251, 107, 0) } }
+
+        .quick { margin-top: 34px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; align-items: center }
+        .quick small { opacity: .8; width: 100%; margin-bottom: 4px }
+        .quick a { padding: 10px 18px; border-radius: 99px; background: rgba(255, 255, 255, .16); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); font-size: 14px; transition: background .3s, color .3s, transform .3s }
+        .quick a:hover { background: var(--lime); color: #000; transform: translateY(-3px) }
+
+        .path { margin-top: 26px; font-size: 12px; opacity: .75; word-break: break-all }
+        .path code { font-family: 'Martian Mono', ui-monospace, monospace; background: rgba(0, 0, 0, .18); padding: 4px 10px; border-radius: 8px }
+
+        /* ---------- floating finance cards (parallax on pointer move) ---------- */
+        .fc { position: absolute; z-index: 1; pointer-events: none; opacity: 0; animation: rise 1s cubic-bezier(.2, .8, .2, 1) forwards; transition: translate .25s ease-out }
+        .fc>div { background: #fff; color: #000; border-radius: 16px; padding: 14px 16px; font-size: 12px; box-shadow: 0 14px 34px rgba(0, 0, 0, .2); animation: bob 6s ease-in-out infinite }
+        .fc small { color: #777; display: block }
+        .fc h3 { font-weight: 400; font-size: 24px; letter-spacing: -.04em; margin-top: 4px }
+        .fc .bars { display: flex; align-items: flex-end; gap: 5px; height: 46px; margin-top: 8px; width: 110px }
+        .fc .bars i { flex: 1; background: #eee; border-radius: 2px; transform-origin: bottom; animation: grow 2.4s ease-in-out infinite alternate }
+        .fc .bars i:last-child { background: var(--sky) }
+        .fc .bars i:nth-child(2) { animation-delay: .2s } .fc .bars i:nth-child(3) { animation-delay: .4s } .fc .bars i:nth-child(4) { animation-delay: .6s }
+        @keyframes grow { from { transform: scaleY(.55) } }
+        @keyframes bob { 50% { transform: translateY(-12px) } }
+        .fc.a { left: 6%; top: 18%; animation-delay: 1s }
+        .fc.b { right: 6%; top: 30%; animation-delay: 1.2s } .fc.b>div { animation-delay: -2s }
+        .fc.c { left: 10%; bottom: 14%; animation-delay: 1.4s } .fc.c>div { animation-delay: -4s }
+        .bad { color: #e5484d }
+
+        footer { text-align: center; padding: 0 20px 26px; font-size: 13px; opacity: .8; position: relative; z-index: 2 }
+
+        /* ---------- loader ---------- */
+        #loader { position: fixed; inset: 0; background: var(--ink); z-index: 99; display: grid; place-items: center; transition: opacity .7s, visibility .7s }
+        #loader.hide { opacity: 0; visibility: hidden }
+        #loader svg { width: 70px; animation: pl 1s ease-in-out infinite }
+        @keyframes pl { 50% { transform: scale(1.2); opacity: .55 } }
+        body:not(.ready) .page * { animation-play-state: paused }
+
+        /* ---------- responsive ---------- */
+        @media(max-width:1000px) { .fc.c { display: none } .fc.a { left: 2%; top: 12% } .fc.b { right: 2% } }
+        @media(max-width:768px) {
+            body { padding: 6px } .page { border-radius: 24px; min-height: calc(100vh - 12px); min-height: calc(100dvh - 12px) }
+            nav { padding: 16px 20px } .fc { display: none }
+            main { padding-bottom: 36px } .cta { flex-direction: column; align-items: stretch } .btn { justify-content: space-between }
+            .ghost { text-align: center }
+        }
+        @media(max-width:380px) { .logo { font-size: 17px } .pill { padding: 11px 15px } }
+        @media(prefers-reduced-motion:reduce) {
+            *, *:before { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition: none !important }
+            .num span, .rv, .fc { opacity: 1; transform: none }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="loader"><svg viewBox="0 0 34 24" fill="#d9fb6b">
+            <path d="M12 0l12 24H15L6 6 0 18l3 6h12L12 18l6-12 4 8h4L18 0z" />
+            <path d="M22 10l12 14H24z" />
+        </svg></div>
+
+    <div class="page" id="page">
+        <div class="glow"></div>
+
+        <nav>
+            <a href="./index.html" class="logo"><svg viewBox="0 0 34 24" fill="#fff">
+                    <path d="M12 0l12 24H15L6 6 0 18l3 6h12L12 18l6-12 4 8h4L18 0z" />
+                    <path d="M22 10l12 14H24z" />
+                </svg>Stackly</a>
+            <a href="./login.html" class="pill mono">Login</a>
+        </nav>
+
+        <div class="fc a" data-depth="18"><div><small>Revenue growth</small>
+            <div class="bars"><i style="height:30%"></i><i style="height:50%"></i><i style="height:40%"></i><i style="height:75%"></i><i style="height:100%"></i></div></div></div>
+        <div class="fc b" data-depth="-24"><div><small>Page balance</small><h3 class="bad">$0.00</h3></div></div>
+        <div class="fc c" data-depth="30"><div><small>Pages found</small><h3>0 / 1</h3></div></div>
+
+        <main>
+            <div class="wrap">
+                <div class="tag mono rv d1" style="animation-delay:.05s"><i class="fa-solid fa-triangle-exclamation"></i> Error 404</div>
+
+                <div class="num" aria-label="404">
+                    <span>4</span>
+                    <span class="zero" aria-hidden="true">
+                        <svg class="pie" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="44" fill="#fff" />
+                            <path d="M50 50 L50 6 A44 44 0 0 1 94 50 Z" fill="#d9fb6b" class="slice" />
+                            <path d="M50 50 L94 50 A44 44 0 0 1 50 94 Z" fill="#3ec4f7" />
+                            <circle cx="50" cy="50" r="19" fill="#2a8bd6" />
+                        </svg>
+                    </span>
+                    <span>4</span>
+                </div>
+
+                <h1 class="rv d1">This page is <em>off the books</em></h1>
+                <p class="sub rv d2">We checked every ledger and couldn’t find what you were looking for. It may have moved, been renamed, or never existed.</p>
+
+                <div class="cta rv d3">
+                    <a href="./index.html" class="btn mono pulse">Back to home <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="javascript:history.length>1?history.back():location.href='./index.html'" class="ghost mono"><i class="fa-solid fa-arrow-left"></i>&nbsp; Go back</a>
+                </div>
+
+                <div class="quick rv d4">
+                    <small class="mono">Or try one of these</small>
+                    <a href="./service.html">Services</a>
+                    <a href="./about.html">About us</a>
+                    <a href="./blog.html">Blog</a>
+                    <a href="./contact.html">Contact</a>
+                </div>
+
+                <p class="path rv d4">Requested: <code id="path">/</code></p>
+            </div>
+        </main>
+
+        <footer>© 2026 Stackly Inc. All rights reserved.</footer>
+    </div>
+
+    <script>
+        // loader
+        setTimeout(function () {
+            document.getElementById('loader').classList.add('hide');
+            document.body.classList.add('ready');
+        }, 700);
+
+        // show the missing path
+        try { document.getElementById('path').textContent = location.pathname + location.search; } catch (e) { }
+
+        // pointer parallax on floating cards (desktop only)
+        (function () {
+            var cards = document.querySelectorAll('.fc');
+            if (!window.matchMedia('(hover:hover) and (min-width:1001px)').matches) return;
+            addEventListener('pointermove', function (e) {
+                var x = e.clientX / innerWidth - .5, y = e.clientY / innerHeight - .5;
+                cards.forEach(function (c) {
+                    var d = +c.dataset.depth;
+                    c.style.translate = (x * d) + 'px ' + (y * d) + 'px';
+                });
+            }, { passive: true });
+        })();
+    </script>
+</body>
+
+</html>
