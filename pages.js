@@ -252,22 +252,31 @@
     }
 
     /* ---------- forms: validation + fake submit (replace with your API call) ---------- */
-    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    const emailRe = /^[^\s@]+@[^\s@]+\.(?:com|in)$/i;
     const check = (field) => {
         const el = $('input,select,textarea', field);
         if (!el) return true;
         const v = el.value.trim();
         let msg = '';
-        if (el.required && el.type === 'checkbox' && !el.checked) msg = 'Please accept to continue';
-        else if (el.required && !v) msg = 'This field is required';
-        else if (el.type === 'email' && v && !emailRe.test(v)) msg = 'Enter a valid email address';
-        else if (el.dataset.min && v.length < +el.dataset.min) msg = `Use at least ${el.dataset.min} characters`;
+        if (el.required && el.type === 'checkbox' && !el.checked) msg = el.dataset.requiredMessage || 'Please accept to continue';
+        else if (el.required && !v) msg = el.dataset.requiredMessage || 'This field is required';
+        else if (el.type === 'email' && v && !emailRe.test(v)) msg = el.dataset.invalidMessage || 'Enter a valid email address';
+        else if (el.dataset.min && v.length < +el.dataset.min) msg = el.dataset.minMessage || `Use at least ${el.dataset.min} characters`;
         else if (el.dataset.match && v !== $(el.dataset.match).value) msg = 'Passwords do not match';
         field.classList.toggle('err', !!msg);
         const m = $('.msg', field);
         if (m) m.textContent = msg;
         return !msg;
     };
+
+    const loginForm = $('#loginForm');
+    if (loginForm && localStorage.getItem('remember') === 'true') {
+        const savedEmail = localStorage.getItem('email');
+        const savedRole = localStorage.getItem('role');
+        if (savedEmail) $('#email', loginForm).value = savedEmail;
+        if (savedRole) $('#role', loginForm).value = savedRole;
+        $('#remember', loginForm).checked = true;
+    }
 
     $$('form[data-form]').forEach((f) => {
         $$('.field', f).forEach((fl) => {
@@ -285,6 +294,17 @@
             });
             if (!ok) { $('input,select,textarea', firstBad).focus(); return; }
 
+            const loginRedirect = f.id === 'loginForm'
+                ? ($('#role', f).value === 'admin' ? './admin.html' : './user.html')
+                : '';
+
+            if (f.id === 'loginForm') {
+                localStorage.setItem('email', $('#email', f).value.trim());
+                localStorage.setItem('role', $('#role', f).value);
+                if ($('#remember', f).checked) localStorage.setItem('remember', 'true');
+                else localStorage.removeItem('remember');
+            }
+
             const btn = $('button[type=submit], .btn', f);
             const txt = btn && $('b', btn);
             const old = txt && txt.textContent;
@@ -296,15 +316,23 @@
                 if (f.dataset.form === 'sent') {
                     f.classList.add('sent');
                 } else {
-                    toast(f.dataset.toast || 'Done!');
-                    f.reset();
-                    $$('.rules li').forEach((li) => li.classList.remove('ok'));
-                    if (meter) meter.dataset.l = 0;
-                    if (f.dataset.redirect) setTimeout(() => (location.href = f.dataset.redirect), 1600);
+                    if (f.id === 'loginForm') {
+                        setTimeout(() => (location.href = loginRedirect), 900);
+                    } else {
+                        toast(f.dataset.toast || 'Done!');
+                        f.reset();
+                        $$('.rules li').forEach((li) => li.classList.remove('ok'));
+                        if (meter) meter.dataset.l = 0;
+                        if (f.dataset.redirect) setTimeout(() => (location.href = f.dataset.redirect), 1600);
+                    }
                 }
             }, 1200);
         });
     });
+
+    $$('.soc2 .sbtn').forEach((b) =>
+        b.addEventListener('click', () => { location.href = './404.html'; })
+    );
 
     $$('[data-reset]').forEach((b) =>
         b.addEventListener('click', () => {

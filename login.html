@@ -53,14 +53,20 @@
                 </div>
                 <div class="or">or log in with email</div>
 
-                <form class="aform" data-form="toast" data-toast="Welcome back! (demo – connect your backend)" novalidate>
+                <form class="aform" id="loginForm" data-form="toast" data-toast="Welcome back! (demo – connect your backend)" novalidate>
                     <div class="field"><label for="email">Email address</label>
-                        <input id="email" type="email" placeholder="you@company.com" autocomplete="email" required><small class="msg"></small></div>
+                        <input id="email" name="email" type="email" placeholder="you@company.com" autocomplete="email" required data-required-message="Email is required" data-invalid-message="Enter an email address ending in .com or .in"><small class="msg"></small></div>
+                    <div class="field"><label for="role">Role</label>
+                        <select id="role" name="role" required data-required-message="Please select your role">
+                            <option value="" disabled selected>Select your role</option>
+                            <option value="user">User</option>
+                            <option value="admin">Admin</option>
+                        </select><small class="msg"></small></div>
                     <div class="field"><label for="pass">Password</label>
-                        <div class="pw"><input id="pass" type="password" placeholder="Your password" autocomplete="current-password" required><button type="button" aria-label="Show password"><i class="fa-solid fa-eye"></i></button></div>
+                        <div class="pw"><input id="pass" name="password" type="password" placeholder="Your password" autocomplete="current-password" required data-required-message="Password is required" data-min="8" data-min-message="Password must be at least 8 characters"><button type="button" aria-label="Show password"><i class="fa-solid fa-eye"></i></button></div>
                         <small class="msg"></small></div>
                     <div class="row-s">
-                        <label class="chk"><input type="checkbox" checked> Remember me</label>
+                        <label class="chk"><input type="checkbox" id="remember" name="remember"> Remember me</label>
                         <a href="./404.html">Forgot password?</a>
                     </div>
                     <button class="btn dark mono" type="submit"><b style="font-weight:500">Log in</b> <i class="fa-solid fa-arrow-right"></i></button>

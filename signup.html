@@ -55,13 +55,13 @@
 
                 <form class="aform" data-form="toast" data-toast="Account created! Redirecting to login…" data-redirect="./login.html" novalidate>
                     <div class="field"><label for="name">Full name</label>
-                        <input id="name" placeholder="Jane Doe" autocomplete="name" required><small class="msg"></small></div>
+                        <input id="name" placeholder="Jane Doe" autocomplete="name" required data-required-message="Full name is required"><small class="msg"></small></div>
                     <div class="field"><label for="email">Work email</label>
-                        <input id="email" type="email" placeholder="you@company.com" autocomplete="email" required><small class="msg"></small></div>
+                        <input id="email" type="email" placeholder="you@company.com" autocomplete="email" required data-required-message="Email is required" data-invalid-message="Enter an email address ending in .com or .in"><small class="msg"></small></div>
                     <div class="field"><label for="company">Company</label>
-                        <input id="company" placeholder="Company name" autocomplete="organization" required><small class="msg"></small></div>
+                        <input id="company" placeholder="Company name" autocomplete="organization" required data-required-message="Company name is required"><small class="msg"></small></div>
                     <div class="field"><label for="password">Password</label>
-                        <div class="pw"><input id="password" type="password" placeholder="Create a password" autocomplete="new-password" required data-min="8"><button type="button" aria-label="Show password"><i class="fa-solid fa-eye"></i></button></div>
+                        <div class="pw"><input id="password" type="password" placeholder="Create a password" autocomplete="new-password" required data-required-message="Password is required" data-min="8" data-min-message="Password must be at least 8 characters"><button type="button" aria-label="Show password"><i class="fa-solid fa-eye"></i></button></div>
                         <small class="msg"></small>
                         <div class="meter" id="meter" data-l="0"><i></i><i></i><i></i><i></i></div>
                         <ul class="rules">
@@ -72,10 +72,10 @@
                         </ul>
                         <small id="strengthTxt" style="color:#888;font-size:12px">Enter a password</small></div>
                     <div class="field"><label for="confirm">Confirm password</label>
-                        <div class="pw"><input id="confirm" type="password" placeholder="Repeat password" autocomplete="new-password" required data-match="#password"><button type="button" aria-label="Show password"><i class="fa-solid fa-eye"></i></button></div>
+                        <div class="pw"><input id="confirm" type="password" placeholder="Repeat password" autocomplete="new-password" required data-required-message="Please confirm your password" data-match="#password"><button type="button" aria-label="Show password"><i class="fa-solid fa-eye"></i></button></div>
                         <small class="msg"></small></div>
                     <div class="field">
-                        <label class="chk"><input type="checkbox" required> <span>I agree to the <a href="./404.html">Terms of Service</a> and <a href="./404.html">Privacy Policy</a></span></label>
+                        <label class="chk"><input type="checkbox" required data-required-message="Please accept the terms and privacy policy"><span>I agree to the <a href="./404.html">Terms of Service</a> and <a href="./404.html">Privacy Policy</a></span></label>
                         <small class="msg"></small></div>
                     <button class="btn dark mono" type="submit"><b style="font-weight:500">Create account</b> <i class="fa-solid fa-arrow-right"></i></button>
                 </form>
