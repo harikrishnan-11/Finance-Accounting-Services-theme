@@ -236,7 +236,7 @@ nav {
     max-width: 900px;
     margin: 0 auto;
     position: relative;
-    z-index: 2
+    z-index: 9999
 }
 
 .hero h1 {
@@ -1654,7 +1654,7 @@ img.pic {
 
 body:not(.ready) .hero-c>* {
     animation: none;
-    opacity: 0
+    opacity: 1;
 }
 
 .hero>.bgimg,
@@ -2352,7 +2352,6 @@ header.hero>nav.fx.hide {
 
 .hero-c {
     transform: translateY(calc(var(--s, 0)*-70px));
-    opacity: calc(1 - var(--s, 0)*1.3)
 }
 
 
