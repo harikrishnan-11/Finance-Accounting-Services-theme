@@ -177,6 +177,7 @@
     background: radial-gradient(circle, rgba(217, 251, 107, .3), transparent 65%); animation: drift 12s ease-in-out infinite alternate
 }
 .cta2>* { position: relative }
+.cta2>div { min-width: 0 }
 .cta2 h2 { font-size: clamp(28px, 4vw, 46px); max-width: 560px }
 .cta2 h2 .w { padding-bottom: .12em }
 .cta2 p { color: #bbb; margin-top: 14px; max-width: 460px }
@@ -339,6 +340,11 @@ footer.ft { margin: 0 10px 10px; background: var(--ink); color: #fff; border-rad
     .tools { flex-direction: column; align-items: stretch }
     .search { width: 100% }
     .cta2 { padding: 40px 24px; margin: 0 6px 6px }
+    .cta2>div { flex: 1 1 100%; width: 100%; min-width: 0 }
+    .cta2 h2, .cta2 p { min-width: 0; overflow-wrap: anywhere }
+    .cta2 .sub { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; padding: 8px; border-radius: 18px }
+    .cta2 .sub input { width: 100%; min-height: 48px; padding: 0 12px }
+    .cta2 .sub .btn { width: 100%; min-width: 0; justify-content: space-between }
     .map { height: 380px }
     .map .addr { left: 12px; right: 12px; bottom: 12px; max-width: none }
     .auth { grid-template-columns: 1fr; padding: 6px }

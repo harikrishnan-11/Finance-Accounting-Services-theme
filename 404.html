@@ -42,7 +42,7 @@
         .nav-links { display: flex; align-items: center; gap: 18px }
         .nav-links .home-link, .burger { display: none }
         .logo { display: flex; align-items: center; gap: 10px; font-size: 20px }
-        .logo svg { width: 34px; height: 24px }
+        .logo img { width: 180px; height: 60px; object-fit: cover }
         .pill { padding: 13px 20px; border-radius: 99px; background: var(--lime); color: #000; position: relative; overflow: hidden; transition: transform .3s }
         .pill:hover { transform: translateY(-2px) }
         .burger { width: 40px; height: 40px; border: 0; background: none; color: #fff; cursor: pointer }
@@ -128,7 +128,8 @@
         /* ---------- loader ---------- */
         #loader { position: fixed; inset: 0; background: var(--ink); z-index: 99; display: grid; place-items: center; transition: opacity .7s, visibility .7s }
         #loader.hide { opacity: 0; visibility: hidden }
-        #loader svg { width: 70px; animation: pl 1s ease-in-out infinite }
+        #loader img { width: 180px; max-width: 65vw; height: 60px; object-fit: cover; animation: pl 1s ease-in-out infinite }
+        body.menu-open { overflow: hidden }
         @keyframes pl { 50% { transform: scale(1.2); opacity: .55 } }
         body:not(.ready) .page * { animation-play-state: paused }
 
@@ -137,11 +138,12 @@
         @media(max-width:768px) {
             body { padding: 6px } .page { border-radius: 24px; min-height: calc(100vh - 12px); min-height: calc(100dvh - 12px) }
             nav { padding: 16px 20px } .fc { display: none }
-            .burger { display: block }
-            .nav-links { position: absolute; top: 70px; left: 12px; right: 12px; display: flex; flex-direction: column; align-items: stretch; gap: 0; padding: 10px 24px; border-radius: 16px; background: rgba(10, 60, 110, .94); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); opacity: 0; visibility: hidden; transform: translateY(-10px); transition: .3s }
+            .burger { display: block; position: relative; z-index: 1001 }
+            .nav-links { position: fixed; inset: 0; z-index: 1000; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0; padding: 90px 24px 32px; border-radius: 0; background: rgba(10, 60, 110, .98); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); opacity: 0; visibility: hidden; transform: translateY(-10px); transition: .3s }
             .nav-links.open { opacity: 1; visibility: visible; transform: none }
-            .nav-links .home-link { display: block; padding: 14px 0; border-bottom: 1px solid rgba(255, 255, 255, .12) }
-            .nav-links .pill { align-self: flex-start; margin-top: 12px }
+            .nav-links a { padding: 16px 0; border-bottom: 1px solid rgba(255, 255, 255, .12) }
+            .nav-links .home-link { display: block }
+            .nav-links .pill { align-self: center; margin-top: 18px }
             main { padding-bottom: 36px } .cta { flex-direction: column; align-items: stretch } .btn { justify-content: space-between }
             .ghost { text-align: center }
         }
@@ -154,19 +156,13 @@
 </head>
 
 <body>
-    <div id="loader"><svg viewBox="0 0 34 24" fill="#d9fb6b">
-            <path d="M12 0l12 24H15L6 6 0 18l3 6h12L12 18l6-12 4 8h4L18 0z" />
-            <path d="M22 10l12 14H24z" />
-        </svg></div>
+    <div id="loader"><img src="./src/logo/Untitled design (1)-compressed_11zon.webp" alt="Stackly"></div>
 
     <div class="page" id="page">
         <div class="glow"></div>
 
         <nav>
-            <a href="./index.html" class="logo"><svg viewBox="0 0 34 24" fill="#fff">
-                    <path d="M12 0l12 24H15L6 6 0 18l3 6h12L12 18l6-12 4 8h4L18 0z" />
-                    <path d="M22 10l12 14H24z" />
-                </svg>Stackly</a>
+            <a href="./index.html" class="logo"><img src="./src/logo/Untitled design (1)-compressed_11zon.webp" alt="Stackly"></a>
             <div class="nav-links" id="links">
                 <a href="./index.html" class="home-link mono">Home</a>
                 <a href="./login.html" class="pill mono">Login</a>
@@ -229,13 +225,15 @@
         var burger = document.getElementById('burger');
         var links = document.getElementById('links');
         burger.addEventListener('click', function () {
-            burger.classList.toggle('open');
-            links.classList.toggle('open');
+            var isOpen = burger.classList.toggle('open');
+            links.classList.toggle('open', isOpen);
+            document.body.classList.toggle('menu-open', isOpen);
         });
         links.querySelectorAll('a').forEach(function (link) {
             link.addEventListener('click', function () {
                 burger.classList.remove('open');
                 links.classList.remove('open');
+                document.body.classList.remove('menu-open');
             });
         });
 

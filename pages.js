@@ -19,13 +19,15 @@
     const links = $('#links');
     if (burger && links) {
         burger.onclick = () => {
-            burger.classList.toggle('open');
-            links.classList.toggle('open');
+            const isOpen = burger.classList.toggle('open');
+            links.classList.toggle('open', isOpen);
+            document.body.classList.toggle('menu-open', isOpen);
         };
         $$('a', links).forEach((a) =>
             a.addEventListener('click', () => {
                 burger.classList.remove('open');
                 links.classList.remove('open');
+                document.body.classList.remove('menu-open');
             })
         );
     }

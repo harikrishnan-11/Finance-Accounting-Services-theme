@@ -6,14 +6,16 @@ const burger = document.getElementById('burger');
 const links = document.getElementById('links');
 
 burger.onclick = () => {
-burger.classList.toggle('open');
-links.classList.toggle('open');
+const isOpen = burger.classList.toggle('open');
+links.classList.toggle('open', isOpen);
+document.body.classList.toggle('menu-open', isOpen);
 };
 
 links.querySelectorAll('a').forEach((a) => {
 a.onclick = () => {
     burger.classList.remove('open');
     links.classList.remove('open');
+    document.body.classList.remove('menu-open');
 };
 });
 
