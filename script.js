@@ -148,7 +148,7 @@ s.scrollBy({
 const ld = document.getElementById('loader');
 
 setTimeout(() => {
-ld.classList.add('hide');
+ld?.classList.add('hide');
 document.body.classList.add('ready');
 }, 1100);
 
